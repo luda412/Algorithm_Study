@@ -1,0 +1,29 @@
+package 백준.스택;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Stack;
+
+public class 좋은단어 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int cnt = 0;
+
+        for(int i = 0; i < n; i++){
+            String line = br.readLine();
+            Stack<Character> st = new Stack<>();
+
+            for(int j = 0; j < line.length(); j++){
+                if(st.size() > 0 && st.peek() == line.charAt(j)){
+                    st.pop();
+                }else {
+                    st.push(line.charAt(j));
+                }
+            }
+            if(st.size() == 0) cnt++;
+        }
+        System.out.println(cnt);
+    }
+}
